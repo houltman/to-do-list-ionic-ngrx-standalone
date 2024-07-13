@@ -51,11 +51,7 @@ export class AddTaskComponent implements OnInit {
     });
   }
 
-  //ionViewDidEnter() {
-  //  setTimeout(() => {
-  //    this.setFocus();
-  //  }, 500);
-  //}
+
 
   addTask() {
     if (!this.addTaskForm.valid) {
@@ -96,10 +92,7 @@ export class AddTaskComponent implements OnInit {
     this.isAlertOpen = isOpen;
   }
 
-  setFocus() {
-    //const input = document.querySelector('ion-input');
-    //input.setFocus();
-  }
+
 
 }
 
