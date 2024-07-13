@@ -20,7 +20,7 @@ import { map, take } from 'rxjs';
   templateUrl: './add-task.component.html',
   styleUrls: ['./add-task.component.scss'],
   standalone: true,
-  imports: [ ReactiveFormsModule,IonicModule, CommonModule]
+  imports: [ ReactiveFormsModule, CommonModule,IonInput,IonText,IonHeader, IonAlert,IonToolbar, IonTitle, IonContent, IonFab,IonButton,IonButtons, IonFabButton, IonIcon, IonItem, IonList,IonToggle,IonLabel],
   //imports: [ReactiveFormsModule,, IonText,IonHeader, IonAlert,IonToolbar, IonTitle, IonContent, IonFab,IonButton,IonButtons, IonFabButton, IonIcon, IonItem, IonList,IonToggle,IonLabel],
 })
 
