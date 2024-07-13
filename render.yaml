@@ -1,0 +1,7 @@
+services:
+•  type: web
+
+name: to-do-list-ngrx
+env: static
+staticPublishPath: ./www
+buildCommand: npm install && ionic build --prod
