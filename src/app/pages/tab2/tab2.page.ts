@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IonHeader, ModalController, IonToolbar, IonTitle, IonContent, IonFab,IonButton,IonButtons, IonFabButton, IonIcon, IonItem, IonList, IonToggle, IonLabel } from '@ionic/angular/standalone';
 
 import { CommonModule } from '@angular/common';
 import { Task } from '../../models/task.model';
@@ -11,7 +12,7 @@ import { addIcons } from 'ionicons';
 import { create, trash, add, close, alert } from 'ionicons/icons';
 
 // Componentes
-import { ModalController, IonicModule } from '@ionic/angular';
+//import { ModalController, IonicModule } from '@ionic/angular';
 import { ConfirmDeleteTaskComponent } from '../../components/confirm-delete-task/confirm-delete-task.component';
 import { AddTaskComponent } from '../../components/add-task/add-task.component';
 @Component({
@@ -19,7 +20,8 @@ import { AddTaskComponent } from '../../components/add-task/add-task.component';
   templateUrl: 'tab2.page.html',
   styleUrls: ['tab2.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule]
+  imports: [CommonModule, IonHeader, IonToolbar, IonTitle, IonContent, IonFab,IonButton,IonButtons, IonFabButton, IonIcon, IonItem, IonList,IonToggle,IonLabel],
+  //imports: [IonicModule, CommonModule]
 })
 export class Tab2Page implements OnInit {
 
