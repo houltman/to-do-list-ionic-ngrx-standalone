@@ -18,12 +18,12 @@
           value=""
           formControlName="name"
           id="name"
-      
         >
-            <!--(ionBlur)="addTaskForm.get('name')?.markAsTouched()"-->
           <div slot="label">Nombre <ion-text color="danger">*</ion-text></div>
         </ion-input>
+                    <!--(ionBlur)="addTaskForm.get('name')?.markAsTouched()"-->
       </ion-item>
+<!--
       <div
         class="error-message"
         *ngIf="addTaskForm.get('name')?.touched && addTaskForm.get('name')?.errors?.['required']"
@@ -37,6 +37,7 @@
       >
 	  El nombre de la tarea debe contener mínimo 3 carácteres.
       </div>
+	-->
 
       <ion-item lines="none">
         <ion-button expand="block" type="submit">Crear Tarea</ion-button>

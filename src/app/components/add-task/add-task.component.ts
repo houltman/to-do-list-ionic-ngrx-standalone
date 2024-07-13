@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { ModalController, IonicModule, } from '@ionic/angular';
+
 import { CommonModule } from '@angular/common';
+import { IonicModule } from '@ionic/angular';
+import { IonHeader,IonAlert,IonText, ModalController, IonToolbar, IonTitle, IonContent, IonFab,IonButton,IonButtons, IonFabButton, IonIcon, IonItem, IonList, IonToggle, IonLabel } from '@ionic/angular/standalone';
 
 // Redux
 import { Store } from '@ngrx/store';
@@ -18,8 +20,8 @@ import { map, take } from 'rxjs';
   templateUrl: './add-task.component.html',
   styleUrls: ['./add-task.component.scss'],
   standalone: true,
-  imports: [IonicModule, ReactiveFormsModule, CommonModule]
-
+  imports: [ ReactiveFormsModule,IonicModule, CommonModule]
+  //imports: [ReactiveFormsModule,, IonText,IonHeader, IonAlert,IonToolbar, IonTitle, IonContent, IonFab,IonButton,IonButtons, IonFabButton, IonIcon, IonItem, IonList,IonToggle,IonLabel],
 })
 
 export class AddTaskComponent implements OnInit {
@@ -51,8 +53,6 @@ export class AddTaskComponent implements OnInit {
     });
   }
 
-
-
   addTask() {
     if (!this.addTaskForm.valid) {
 
@@ -81,7 +81,7 @@ export class AddTaskComponent implements OnInit {
     } else {
       this.modalCtrl.dismiss({ add: true, form: this.addTaskForm.value });
     }
-    //
+
   }
 
   dismissModal() {
