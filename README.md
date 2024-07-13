@@ -27,3 +27,17 @@ ionic capacitor sync
 ## Pruebas en Dispositivos Reales
 ionic capacitor open android
 ionic capacitor open ios
+
+## Compatibilidad
+The project is using an incompatible version (AGP 8.2.1) of the Android Gradle plugin. Latest supported version is AGP 8.1.1
+
+Para resolver el problema de incompatibilidad con la versión del Android Gradle Plugin (AGP), necesitas cambiar la versión de AGP en tu proyecto a la última versión soportada, que es la 8.1.1. Sigue estos pasos:
+
+Abre el archivo build.gradle: Este archivo se encuentra en el directorio raíz de tu proyecto Android (dentro de la carpeta android/ si estás utilizando Capacitor).
+
+Modifica la versión de AGP: Busca la línea que define la versión del classpath del Android Gradle Plugin en la sección de dependencias del archivo build.gradle en el directorio android/. Cambia la versión a 8.1.1.
+
+classpath 'com.android.tools.build:gradle:8.1.1'
+
+Sincroniza 
+ionic capacitor sync android
