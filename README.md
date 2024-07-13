@@ -2,6 +2,11 @@
 
 Esta guía proporciona los pasos esenciales para preparar y desplegar tu aplicación Ionic utilizando Capacitor en plataformas Android e iOS.
 
+## Requerimientos
+node v20.15.1
+npm 10.7.0
+ionic CLI 7.1.1
+
 ## Instalacion de dependencias
 npm install
 
