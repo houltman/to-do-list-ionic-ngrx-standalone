@@ -13,7 +13,10 @@ status = 200
   for = "*.css"
   [headers.values]
     Cache-Control = "no-cache, no-store, must-revalidate"
-    
+
+[build.environment]
+  NODE_VERSION = "20.15.1"
+
 [build]
-  command = "npm install -g @ionic/cli && ionic build --prod"
+  command = "npm install -g @ionic/cli@7.1.1 && ionic build --prod"
   publish = "www"
