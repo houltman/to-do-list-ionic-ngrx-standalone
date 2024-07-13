@@ -14,12 +14,13 @@ import { create, trash, add, close, alert } from 'ionicons/icons';
 // Componentes
 import { ConfirmDeleteTaskComponent } from '../../components/confirm-delete-task/confirm-delete-task.component';
 import { AddTaskComponent } from '../../components/add-task/add-task.component';
+import { NotTasksComponent } from 'src/app/components/not-tasks/not-tasks.component';
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
   styleUrls: ['tab2.page.scss'],
   standalone: true, // To Do: importar los componentes de Ionic en un modulo
-  imports: [CommonModule, IonHeader, IonToolbar, IonTitle, IonContent, IonFab,IonButton,IonButtons, IonFabButton, IonIcon, IonItem, IonList,IonToggle,IonLabel],
+  imports: [CommonModule,NotTasksComponent, IonHeader, IonToolbar, IonTitle, IonContent, IonFab,IonButton,IonButtons, IonFabButton, IonIcon, IonItem, IonList,IonToggle,IonLabel],
 })
 export class Tab2Page implements OnInit {
 

@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { IonHeader, ModalController, IonToolbar, IonTitle, IonContent, IonFab,IonButton,IonButtons, IonFabButton, IonIcon, IonItem, IonList, IonToggle, IonLabel } from '@ionic/angular/standalone';
+import { IonHeader, IonCardHeader,IonCardTitle,IonCardContent,IonCard, ModalController, IonToolbar, IonTitle, IonContent, IonFab,IonButton,IonButtons, IonFabButton, IonIcon, IonItem, IonList, IonToggle, IonLabel } from '@ionic/angular/standalone';
 import { CommonModule } from '@angular/common';
 
 // Iconos
@@ -18,6 +18,7 @@ import { Task } from '../../models/task.model';
 //import { ModalController, IonicModule} from '@ionic/angular';
 import { ConfirmDeleteTaskComponent } from '../../components/confirm-delete-task/confirm-delete-task.component';
 import { AddTaskComponent } from '../../components/add-task/add-task.component';
+import { NotTasksComponent } from 'src/app/components/not-tasks/not-tasks.component';
 
 @Component({
   selector: 'app-tab1',
@@ -25,7 +26,7 @@ import { AddTaskComponent } from '../../components/add-task/add-task.component';
   styleUrls: ['tab1.page.scss'],
   standalone: true,
   //imports: [IonicModule,CommonModule] 
-  imports: [CommonModule,AddTaskComponent, IonHeader, IonToolbar, IonTitle, IonContent, IonFab,IonButton,IonButtons, IonFabButton, IonIcon, IonItem, IonList,IonToggle,IonLabel],
+  imports: [CommonModule,NotTasksComponent,IonCardHeader,IonCardContent,IonCardTitle,IonCard,AddTaskComponent, IonHeader, IonToolbar, IonTitle, IonContent, IonFab,IonButton,IonButtons, IonFabButton, IonIcon, IonItem, IonList,IonToggle,IonLabel],
 })
 export class Tab1Page implements OnInit, OnDestroy {
 
