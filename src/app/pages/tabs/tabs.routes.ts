@@ -25,7 +25,7 @@ export const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/tabs/tab1',
+    redirectTo: '/redux',
     pathMatch: 'full',
   },
 ];
