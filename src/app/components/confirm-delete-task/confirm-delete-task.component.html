@@ -1,0 +1,37 @@
+<!--
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Eliminar Tarea</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  ¿Estás seguro de que quieres eliminar esta tarea?
+  <ion-button expand="block" color="danger" (click)="confirmDelete()">Eliminar</ion-button>
+  <ion-button expand="block" (click)="dismissModal()">Cancelar</ion-button>
+</ion-content>
+-->
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Eliminar Tarea {{task}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-item lines="none">
+    <ion-icon name="alert" slot="start" color="danger"></ion-icon>
+    <ion-label>¿Estás seguro de que quieres eliminar la tarea {{task}}?</ion-label>
+  </ion-item>
+  <ion-button expand="block" color="danger" (click)="confirmDelete()">
+    <ion-icon slot="start" name="trash"></ion-icon>
+    Eliminar
+  </ion-button>
+  <ion-button expand="block" (click)="dismissModal()">
+    <ion-icon slot="start" name="close"></ion-icon>
+    Cancelar
+  </ion-button>
+</ion-content>

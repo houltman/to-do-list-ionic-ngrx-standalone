@@ -1,0 +1,36 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title> Lista de Tareas con LocalStorage</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item *ngFor="let task of tasks;let i = index">
+      <ion-label>{{ task.name }}</ion-label>
+      {{ task.done ? '✅' : '' }}
+      <ion-toggle
+        slot="end"
+        [checked]="task.done"
+        (ionChange)="updateTaskDone(task)"
+      ></ion-toggle>
+
+      <ion-buttons slot="end">
+        <!--
+        <ion-button (click)="updateTask(task.id)">
+          <ion-icon slot="icon-only" color="primary" name="create"></ion-icon>
+        </ion-button>
+      -->
+        <ion-button [disabled]="task.done" (click)="deleteTask(task)">
+          <ion-icon slot="icon-only" color="danger" name="trash"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-item>
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="add()" color="success">
+      <ion-icon name="add" color="primary"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

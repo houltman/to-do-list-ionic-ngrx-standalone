@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Agregar una tarea</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="addTaskForm" (ngSubmit)="addTask()">
+    <ion-list>
+      <ion-item>
+        <ion-input
+          labelPlacement="floating"
+          value=""
+          formControlName="name"
+          id="name"
+          (ionBlur)="addTaskForm.get('name')?.markAsTouched()"
+		  appAutofocus
+		  
+        >
+          <div slot="label">Nombre <ion-text color="danger">*</ion-text></div>
+        </ion-input>
+      </ion-item>
+      <div
+        class="error-message"
+        *ngIf="addTaskForm.get('name')?.touched && addTaskForm.get('name')?.errors?.['required']"
+      >
+        El nombre de la tarea es obligatorio.
+      </div>
+
+      <div
+        *ngIf="addTaskForm.get('name')?.errors?.['minlength'] && addTaskForm.get('name')?.touched"
+        class="error-message"
+      >
+	  El nombre de la tarea debe contener mínimo 3 carácteres.
+      </div>
+
+      <ion-item lines="none">
+        <ion-button expand="block" type="submit">Crear Tarea</ion-button>
+      </ion-item>
+    </ion-list>
+  </form>
+
+  <ion-alert
+  [isOpen]="isAlertOpen"
+  header="Información"
+  subHeader="Error al crear la tarea."
+  message="Una tarea con este nombre ya existe."
+  [buttons]="alertButtons"
+  (didDismiss)="setOpen(false)"
+></ion-alert>
+</ion-content>
