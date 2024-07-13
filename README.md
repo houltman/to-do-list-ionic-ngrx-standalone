@@ -2,6 +2,9 @@
 
 Esta guía proporciona los pasos esenciales para preparar y desplegar tu aplicación Ionic utilizando Capacitor en plataformas Android e iOS.
 
+## Deploy en netlify
+https://todoionic-ngrx.netlify.app
+
 ## Requerimientos
 node v20.15.1
 npm 10.7.0
