@@ -11,14 +11,14 @@ import { AppState } from 'src/app/store/app.reducers';
 import { map, take } from 'rxjs';
 
 // Directiva
-import { SharedDirectivesModule } from 'src/app/directives/shared-directives.module';
+//import { SharedDirectivesModule } from 'src/app/directives/shared-directives.module';
 
 @Component({
   selector: 'app-add-task',
   templateUrl: './add-task.component.html',
   styleUrls: ['./add-task.component.scss'],
   standalone: true,
-  imports: [IonicModule, ReactiveFormsModule, CommonModule, SharedDirectivesModule]
+  imports: [IonicModule, ReactiveFormsModule, CommonModule]
 
 })
 
@@ -91,8 +91,6 @@ export class AddTaskComponent implements OnInit {
   setOpen(isOpen: boolean) {
     this.isAlertOpen = isOpen;
   }
-
-
 
 }
 
