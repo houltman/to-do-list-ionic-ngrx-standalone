@@ -51,11 +51,11 @@ export class AddTaskComponent implements OnInit {
     });
   }
 
-  ionViewDidEnter() {
-    setTimeout(() => {
-      this.setFocus();
-    }, 500);
-  }
+  //ionViewDidEnter() {
+  //  setTimeout(() => {
+  //    this.setFocus();
+  //  }, 500);
+  //}
 
   addTask() {
     if (!this.addTaskForm.valid) {
@@ -97,8 +97,8 @@ export class AddTaskComponent implements OnInit {
   }
 
   setFocus() {
-    const input = document.querySelector('ion-input');
-    input?.setFocus();
+    //const input = document.querySelector('ion-input');
+    //input.setFocus();
   }
 
 }
