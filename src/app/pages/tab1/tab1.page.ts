@@ -25,7 +25,7 @@ import { AddTaskComponent } from '../../components/add-task/add-task.component';
   styleUrls: ['tab1.page.scss'],
   standalone: true,
   //imports: [IonicModule,CommonModule] 
-  imports: [CommonModule, IonHeader, IonToolbar, IonTitle, IonContent, IonFab,IonButton,IonButtons, IonFabButton, IonIcon, IonItem, IonList,IonToggle,IonLabel],
+  imports: [CommonModule,AddTaskComponent, IonHeader, IonToolbar, IonTitle, IonContent, IonFab,IonButton,IonButtons, IonFabButton, IonIcon, IonItem, IonList,IonToggle,IonLabel],
 })
 export class Tab1Page implements OnInit, OnDestroy {
 
