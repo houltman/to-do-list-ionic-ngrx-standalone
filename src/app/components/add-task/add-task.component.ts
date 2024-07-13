@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
-import { IonHeader,IonAlert,IonText,IonInput, ModalController, IonToolbar, IonTitle, IonContent, IonFab,IonButton,IonButtons, IonFabButton, IonIcon, IonItem, IonList, IonToggle, IonLabel } from '@ionic/angular/standalone';
+import {  ModalController } from '@ionic/angular/standalone';
 
 // Redux
 import { Store } from '@ngrx/store';
@@ -20,7 +20,7 @@ import { map, take } from 'rxjs';
   templateUrl: './add-task.component.html',
   styleUrls: ['./add-task.component.scss'],
   standalone: true,
-  imports: [ ReactiveFormsModule,IonicModule, CommonModule,IonInput]
+  imports: [ ReactiveFormsModule,IonicModule, CommonModule]
   //imports: [ReactiveFormsModule,, IonText,IonHeader, IonAlert,IonToolbar, IonTitle, IonContent, IonFab,IonButton,IonButtons, IonFabButton, IonIcon, IonItem, IonList,IonToggle,IonLabel],
 })
 
