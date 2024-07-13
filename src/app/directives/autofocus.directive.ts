@@ -1,18 +1,15 @@
-import { Directive, ElementRef, ViewChild } from '@angular/core';
-import { IonInput } from '@ionic/angular';
+import { Directive } from '@angular/core';
 @Directive({
   selector: '[appAutofocus]'
 })
 export class AutofocusDirective {
-  @ViewChild('inputElement', { static: false }) inputElement!: IonInput;
-  constructor(private el: ElementRef) { }
+ 
+  constructor() { }
 
 
 
   ionViewDidEnter() {
-    setTimeout(() => {
-      this.inputElement.setFocus();
-    }, 500);
+
   }
 
 
