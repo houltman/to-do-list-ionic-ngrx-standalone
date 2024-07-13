@@ -22,10 +22,5 @@ export const routes: Routes = [
         pathMatch: 'full',
       },
     ],
-  },
-  {
-    path: '',
-    redirectTo: '/redux',
-    pathMatch: 'full',
-  },
+  }
 ];
