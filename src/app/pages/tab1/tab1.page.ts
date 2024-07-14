@@ -46,6 +46,10 @@ export class Tab1Page implements OnInit, OnDestroy {
       });
   }
 
+  get mostrarNotTasks(): boolean {
+    return this.tasks?.length === 0;
+  }
+
   ngOnDestroy(): void {
     console.log('destroi');
   }

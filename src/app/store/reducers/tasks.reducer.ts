@@ -1,5 +1,5 @@
 import { Action, createReducer, on } from '@ngrx/store';
-import { cargarTasks, cargarTasksSuccess, addTask, updateTaskDone, deleteTask } from '../actions';
+import { cargarTasks, cargarTasksSuccess, addTask, updateTaskDone, deleteTask ,validTask} from '../actions';
 import { Task } from '../../models/task.model';
 
 export interface TasksState {
@@ -51,7 +51,19 @@ const _tasksReducer = createReducer(getTaskLocalStorage(),
   on(deleteTask, (state, { taskId }) => ({
     ...state,
     tasks: state.tasks.filter((t) => t.id !== taskId),
-  }))
+  })),
+  //valida si existe una tarea con el mismo nombre
+   on(validTask, (state, { task }) => {
+     const exists = state.tasks.some((t) => t.name === task.name);
+     if (exists) {
+       return state;
+     }
+      return {
+        ...state,
+        tasks: [...state.tasks, task],
+      };
+    }),
+  
 
 );
 

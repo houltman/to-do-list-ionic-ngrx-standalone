@@ -27,3 +27,9 @@ export const deleteTask = createAction(
     '[Tasks] Eliminar Task',
     props<{ taskId?: number }>()
 );
+
+// validar si existe una tarea con el mismo nombre
+export const validTask = createAction(
+    '[Tasks] Validar Task',
+    props<{ task: Task }>()
+);

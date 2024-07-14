@@ -2,8 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 
 import { CommonModule } from '@angular/common';
-import { IonicModule } from '@ionic/angular';
-import { IonHeader,IonAlert,IonText,IonInput, ModalController, IonToolbar, IonTitle, IonContent, IonFab,IonButton,IonButtons, IonFabButton, IonIcon, IonItem, IonList, IonToggle, IonLabel } from '@ionic/angular/standalone';
+import { IonHeader, IonAlert, IonText, IonInput, ModalController, IonToolbar, IonTitle, IonContent, IonFab, IonButton, IonButtons, IonFabButton, IonIcon, IonItem, IonList, IonToggle, IonLabel } from '@ionic/angular/standalone';
 
 // Redux
 import { Store } from '@ngrx/store';
@@ -21,7 +20,7 @@ import { TasksState } from 'src/app/store/reducers';
   templateUrl: './add-task.component.html',
   styleUrls: ['./add-task.component.scss'],
   standalone: true,
-  imports: [ ReactiveFormsModule, CommonModule,IonInput,IonText,IonHeader, IonAlert,IonToolbar, IonTitle, IonContent, IonFab,IonButton,IonButtons, IonFabButton, IonIcon, IonItem, IonList,IonToggle,IonLabel],
+  imports: [ReactiveFormsModule, CommonModule, IonInput, IonText, IonHeader, IonAlert, IonToolbar, IonTitle, IonContent, IonFab, IonButton, IonButtons, IonFabButton, IonIcon, IonItem, IonList, IonToggle, IonLabel],
   //imports: [ReactiveFormsModule,, IonText,IonHeader, IonAlert,IonToolbar, IonTitle, IonContent, IonFab,IonButton,IonButtons, IonFabButton, IonIcon, IonItem, IonList,IonToggle,IonLabel],
 })
 
@@ -67,11 +66,16 @@ export class AddTaskComponent implements OnInit {
     const taskName = this.addTaskForm.get('name')?.value;
     // Si es por patron redux valido que no exista una tarea con el mismo nombre
     if (this.redux) {
+      this.modalCtrl.dismiss({ add: true, form: this.addTaskForm.value });
+      // TO DO: crear en el store una acción para validar si existe una tarea con el mismo nombre
+      /*
       // Verificar si ya existe una tarea con el mismo nombre
       this.store.select('tasks').pipe(
         take(1), // Tomar el primer valor emitido para evitar subscripciones infinitas
-        map((tasksState:TasksState) => tasksState.tasks.some((task: any) => task.name === taskName)),
-       // map((tasksState: TasksState) => tasksState.tasks.some((task: Task) => task.name === taskName)),
+        map((tasksState: TasksState) => tasksState.tasks.some((task: any) => task.name === taskName)),
+
+        //map((tasksState:TasksState) => tasksState.tasks.some((task: any) => task.name === taskName)),
+        // map((tasksState: TasksState) => tasksState.tasks.some((task: Task) => task.name === taskName)),
       ).subscribe(exists => {
         if (exists) {
           this.isAlertOpen = true;
@@ -80,9 +84,12 @@ export class AddTaskComponent implements OnInit {
           this.modalCtrl.dismiss({ add: true, form: this.addTaskForm.value });
         }
       });
+      */
     } else {
+      // To Do: Crear una acción para agregar una tarea en el store
       this.modalCtrl.dismiss({ add: true, form: this.addTaskForm.value });
     }
+    
 
   }
 

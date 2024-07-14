@@ -29,7 +29,7 @@
   </ion-list>
 
   <!-- Mensaje cuando no hay tareas -->
-  <app-not-tasks *ngIf="tasks?.length === 0"></app-not-tasks>
+  <app-not-tasks *ngIf="mostrarNotTasks"></app-not-tasks>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button (click)="add()">

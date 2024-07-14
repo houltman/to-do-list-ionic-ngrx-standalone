@@ -37,6 +37,10 @@ export class Tab2Page implements OnInit {
     await this.storageService.init(); 
     this.tasks = await this.storageService.getTasks();
   }
+  
+  get mostrarNotTasks(): boolean {
+    return this.tasks?.length === 0;
+  }
 
   async getTasks() {
     this.tasks = await this.storageService.getTasks();
