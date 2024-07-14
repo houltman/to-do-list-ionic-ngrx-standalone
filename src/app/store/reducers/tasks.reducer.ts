@@ -12,24 +12,13 @@ export const tasksInit: TasksState = {
   loading: false,
 }
 
-export const getTaskLocalStorage: () => TasksState = () => {
-  try {
-    const tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
-    if (tasks.length === 0) return tasksInit;
-    return tasks;
-  } catch (error) {
-    return tasksInit;
-  }
-}
-
-const _tasksReducer = createReducer(getTaskLocalStorage(),
+const _tasksReducer = createReducer(tasksInit,
 
   on(cargarTasks, state => ({ ...state, loading: true })),
 
   on(cargarTasksSuccess, (state, { tasks }) => ({
     ...state,
     loading: false,
-    loaded: true,
     tasks: [...tasks]
   })),
 
@@ -63,8 +52,6 @@ const _tasksReducer = createReducer(getTaskLocalStorage(),
         tasks: [...state.tasks, task],
       };
     }),
-  
-
 );
 
 export function tasksReducer(state: TasksState, action: Action) {

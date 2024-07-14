@@ -11,15 +11,13 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { appReducers, metaReducers } from './store/app.reducers';
 import { AppComponent } from './app.component';
 
-
-
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
     BrowserModule,
     IonicStorageModule.forRoot(),
-    StoreModule.forRoot(appReducers, { metaReducers }),
+    StoreModule.forRoot(appReducers),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,

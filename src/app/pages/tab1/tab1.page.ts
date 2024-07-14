@@ -9,7 +9,7 @@ import { create, trash, add , close,alert } from 'ionicons/icons';
 // Redux
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/store/app.reducers';
-import { addTask,updateTaskDone ,deleteTask} from '../../store/actions/tasks.actions';
+import { addTask,updateTaskDone ,deleteTask, cargarTasks} from '../../store/actions/tasks.actions';
 
 // Models
 import { Task } from '../../models/task.model';
@@ -31,7 +31,7 @@ import { NotTasksComponent } from 'src/app/components/not-tasks/not-tasks.compon
 export class Tab1Page implements OnInit, OnDestroy {
 
   tasks: Task[] = [];
-
+  
   constructor(
     private store: Store<AppState>,
     private modalController: ModalController
@@ -42,7 +42,8 @@ export class Tab1Page implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.store.select('tasks')
       .subscribe(({ tasks }) => {
-        this.tasks = tasks.map(task => ({ ...task }));
+        if(!tasks) return;
+        this.tasks = tasks;
       });
   }
 
@@ -77,7 +78,6 @@ export class Tab1Page implements OnInit, OnDestroy {
       }
       this.store.dispatch(addTask({ task }));
     }
-
 
   }
 
