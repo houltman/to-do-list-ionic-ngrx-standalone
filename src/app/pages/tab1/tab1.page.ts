@@ -42,7 +42,7 @@ export class Tab1Page implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.store.select('tasks')
       .subscribe(({ tasks }) => {
-        this.tasks = tasks;
+        this.tasks = tasks.map(task => ({ ...task }));
       });
   }
 
