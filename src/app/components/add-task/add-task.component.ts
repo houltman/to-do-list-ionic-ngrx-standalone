@@ -11,6 +11,7 @@ import { AppState } from 'src/app/store/app.reducers';
 
 // rxjs
 import { map, take } from 'rxjs';
+import { TasksState } from 'src/app/store/reducers';
 
 // Directiva
 //import { SharedDirectivesModule } from 'src/app/directives/shared-directives.module';
@@ -69,7 +70,8 @@ export class AddTaskComponent implements OnInit {
       // Verificar si ya existe una tarea con el mismo nombre
       this.store.select('tasks').pipe(
         take(1), // Tomar el primer valor emitido para evitar subscripciones infinitas
-        map(tasksState => tasksState.tasks.some((task: any) => task.name === taskName)),
+        map((tasksState:TasksState) => tasksState.tasks.some((task: any) => task.name === taskName)),
+       // map((tasksState: TasksState) => tasksState.tasks.some((task: Task) => task.name === taskName)),
       ).subscribe(exists => {
         if (exists) {
           this.isAlertOpen = true;

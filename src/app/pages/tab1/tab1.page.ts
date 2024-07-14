@@ -32,7 +32,6 @@ export class Tab1Page implements OnInit, OnDestroy {
 
   tasks: Task[] = [];
 
-
   constructor(
     private store: Store<AppState>,
     private modalController: ModalController
