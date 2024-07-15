@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-list class="list-task">
+  <ion-list class="list-task" *ngIf="!mostrarNotTasks">
     <ion-segment currentFilter (ionChange)="filterTasks($event)">
       <ion-segment-button value="all" checked>
         <ion-label>Todas</ion-label>
