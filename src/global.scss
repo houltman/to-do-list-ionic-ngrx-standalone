@@ -57,10 +57,14 @@
     --padding-top: 24px;
     --padding-bottom: 24px;
 
-    --margin-start: 24px;
-    --margin-end: 24px;
-    --margin-top: 24px;
-    --margin-bottom: 24px;
+    --margin-start: 34px;
+    --margin-end: 34px;
+    --margin-top: 34px;
+    --margin-bottom: 34px;
+  }
+  .list-task{
+    max-width: 500px;
+    margin: auto
   }
 }
 .error-message {

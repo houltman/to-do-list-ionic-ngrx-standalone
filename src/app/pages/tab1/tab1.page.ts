@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { IonHeader, IonCardHeader,IonCardTitle,IonCardContent,IonCard, ModalController, IonToolbar, IonTitle, IonContent, IonFab,IonButton,IonButtons, IonFabButton, IonIcon, IonItem, IonList, IonToggle, IonLabel } from '@ionic/angular/standalone';
+import { IonHeader,IonSegment,IonSegmentButton, IonCardHeader,IonCardTitle,IonCardContent,IonCard, ModalController, IonToolbar, IonTitle, IonContent, IonFab,IonButton,IonButtons, IonFabButton, IonIcon, IonItem, IonList, IonToggle, IonLabel } from '@ionic/angular/standalone';
 import { CommonModule } from '@angular/common';
 
 // Iconos
@@ -26,11 +26,16 @@ import { NotTasksComponent } from 'src/app/components/not-tasks/not-tasks.compon
   styleUrls: ['tab1.page.scss'],
   standalone: true,
   //imports: [IonicModule,CommonModule] 
-  imports: [CommonModule,NotTasksComponent,IonCardHeader,IonCardContent,IonCardTitle,IonCard,AddTaskComponent, IonHeader, IonToolbar, IonTitle, IonContent, IonFab,IonButton,IonButtons, IonFabButton, IonIcon, IonItem, IonList,IonToggle,IonLabel],
+  imports: [CommonModule,NotTasksComponent,IonCardHeader,IonSegment,IonSegmentButton,IonCardContent,IonCardTitle,IonCard,AddTaskComponent, IonHeader, IonToolbar, IonTitle, IonContent, IonFab,IonButton,IonButtons, IonFabButton, IonIcon, IonItem, IonList,IonToggle,IonLabel],
 })
 export class Tab1Page implements OnInit, OnDestroy {
 
   tasks: Task[] = [];
+  filteredTasks: Task[] = [];
+  currentFilter: string = 'all';
+  all: string = 'all';
+  complete: string = 'complete';
+  pending: string = 'pending';
   
   constructor(
     private store: Store<AppState>,
@@ -44,6 +49,9 @@ export class Tab1Page implements OnInit, OnDestroy {
       .subscribe(({ tasks }) => {
         if(!tasks) return;
         this.tasks = tasks;
+        this.filteredTasks = [...this.tasks]; 
+        this.applyFilter();
+        // TODO: Probar e Implementar el filtro de tareas en el store
       });
   }
 
@@ -104,6 +112,21 @@ export class Tab1Page implements OnInit, OnDestroy {
     if (data.confirmed) {
 
       this.store.dispatch(deleteTask({ taskId: task.id}));
+    }
+  }
+
+  filterTasks(event: any) {
+    this.currentFilter = event.detail.value;
+    this.applyFilter();
+  }
+
+  applyFilter() {
+    if (this.currentFilter === this.all) {
+      this.filteredTasks = [...this.tasks];
+    } else if (this.currentFilter === this.complete) {
+      this.filteredTasks = this.tasks.filter(task => task.done);
+    } else if (this.currentFilter === this.pending) {
+      this.filteredTasks = this.tasks.filter(task => !task.done);
     }
   }
 
