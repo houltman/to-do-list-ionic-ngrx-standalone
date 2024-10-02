@@ -88,7 +88,7 @@ export class Tab2Page implements OnInit {
 
         if (data.add) {
             const task: Task = {
-                id: Date.now(),
+                _id: "2343211119",
                 name: data.form.name,
                 done: data.form.done,
                 created_at: data.form.created_at,
@@ -117,7 +117,7 @@ export class Tab2Page implements OnInit {
 
         const { data } = await modal.onWillDismiss();
         if (data.confirmed) {
-            this.storageService.deleteTask(task.id);
+            this.storageService.deleteTask(task._id);
             await this.getTasks();
         }
     }

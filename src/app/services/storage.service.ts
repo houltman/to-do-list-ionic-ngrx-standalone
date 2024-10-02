@@ -40,7 +40,7 @@ export class StorageService {
     // Actualizar tarea
     public async updateTask(updatedTask: Task) {
         const index = this.tasks.findIndex(
-            (task) => task.id === updatedTask.id
+            (task) => task._id === updatedTask._id
         );
         if (index > -1) {
             this.tasks[index] = updatedTask;
@@ -52,8 +52,8 @@ export class StorageService {
     }
 
     // Eliminar tarea
-    public async deleteTask(taskId?: number) {
-        this.tasks = this.tasks.filter((task) => task.id !== taskId);
+    public async deleteTask(taskId?: string) {
+        this.tasks = this.tasks.filter((task) => task._id !== taskId);
         await this._storage?.set(this.localStorage, JSON.stringify(this.tasks));
     }
 }

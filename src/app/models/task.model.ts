@@ -1,6 +1,6 @@
 export class Task {
     constructor(
-        public id?: number,
+        public _id?: string,
         public name?: string,
         public done?: boolean,
         public created_at?: string,

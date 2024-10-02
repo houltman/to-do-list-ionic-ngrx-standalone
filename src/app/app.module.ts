@@ -4,18 +4,23 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { environment } from '../environments/environment';
 
+import { HttpClientModule } from '@angular/common/http';
+import { TaskService } from './services/tasks.service';
+
 import { IonicStorageModule } from '@ionic/storage-angular';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-// Asegúrate de tener esta importación
+
 import { appReducers, metaReducers } from './store/app.reducers';
 import { AppComponent } from './app.component';
 
 @NgModule({
     declarations: [],
+   providers: [TaskService],
     imports: [
         CommonModule,
         BrowserModule,
+        HttpClientModule,
         IonicStorageModule.forRoot(),
         StoreModule.forRoot(appReducers),
         StoreDevtoolsModule.instrument({
@@ -25,4 +30,4 @@ import { AppComponent } from './app.component';
     ],
     bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

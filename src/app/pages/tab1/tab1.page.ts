@@ -36,6 +36,7 @@ import {
     updateTaskDone,
     deleteTask,
     cargarTasks,
+    cargarTasksSuccess,
 } from '../../store/actions/tasks.actions';
 
 // Models
@@ -44,6 +45,8 @@ import { Task } from '../../models/task.model';
 // componentes
 import { AddTaskComponent } from '../../components/add-task/add-task.component';
 import { NotTasksComponent } from 'src/app/components/not-tasks/not-tasks.component';
+import { Observable } from 'rxjs';
+import { TaskService } from 'src/app/services/tasks.service';
 
 @Component({
     selector: 'app-tab1',
@@ -83,13 +86,15 @@ export class Tab1Page implements OnInit, OnDestroy {
     all: string = 'all';
     complete: string = 'complete';
     pending: string = 'pending';
-
+    //tasks$?: Observable<Task[]>;
     constructor(
         private store: Store<AppState>,
         private modalController: ModalController,
-        private alertController: AlertController
+        private alertController: AlertController,
+        private taskService: TaskService
     ) {
         addIcons({ create, trash, add, close, alert });
+        //this.tasks$ = this.store.select('tasks');
     }
 
     ngOnInit(): void {
@@ -102,7 +107,14 @@ export class Tab1Page implements OnInit, OnDestroy {
         });
     }
 
+    ionViewWillEnter() {
+        this.taskService.getTasks().subscribe(tasks => {
+            this.store.dispatch(cargarTasksSuccess({ tasks }));
+        });
+    }
+
     get mostrarNotTasks(): boolean {
+        //return false;
         return this.tasks?.length === 0;
     }
 
@@ -158,20 +170,25 @@ export class Tab1Page implements OnInit, OnDestroy {
 
     createTask(data: any) {
         const task: Task = {
-            id: Date.now(),
             name: data.task,
-            done: false,
-            created_at: new Date().toISOString(),
         };
-        this.store.dispatch(addTask({ task }));
+        // Enviar la tarea
+        this.taskService.addTask(task).subscribe((saveTask) => {
+            this.store.dispatch(addTask({ task: saveTask }));
+        });
     }
 
     updateTaskDone(task: Task) {
         // Cambia el estado de 'done' de la tarea seleccionada
-        const updatedTask = { ...task, done: !task.done };
+        //const updatedTask = { ...task, done: !task.done };
 
-        // Despacha una acción para actualizar la tarea en el store
-        this.store.dispatch(updateTaskDone({ task: updatedTask }));
+        const { name, done, _id } = task;
+        const updatedTask = { name, done: !done };
+
+        this.taskService.updateTask(updatedTask,_id).subscribe((task) => {
+            // Despacha una acción para actualizar la tarea en el store
+            this.store.dispatch(updateTaskDone({ task }));
+        });
     }
 
     async deleteTask(task: Task) {
@@ -190,7 +207,10 @@ export class Tab1Page implements OnInit, OnDestroy {
                 {
                     text: 'Aceptar',
                     handler: () => {
-                        this.store.dispatch(deleteTask({ taskId: task.id }));
+                        this.taskService.deleteTask(task).subscribe(()=>{
+                            this.store.dispatch(deleteTask({ taskId: task._id }));
+                        })
+                       
                     },
                 },
             ],
@@ -213,4 +233,5 @@ export class Tab1Page implements OnInit, OnDestroy {
             this.filteredTasks = this.tasks.filter((task) => !task.done);
         }
     }
+
 }

@@ -25,7 +25,7 @@ export const updateTaskDone = createAction(
 // Eliminar la tarea
 export const deleteTask = createAction(
     '[Tasks] Eliminar Task',
-    props<{ taskId?: number }>()
+    props<{ taskId?: string }>()
 );
 
 // validar si existe una tarea con el mismo nombre

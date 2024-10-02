@@ -32,13 +32,14 @@ const _tasksReducer = createReducer(
 
     on(addTask, (state, { task }) => ({
         ...state,
-        tasks: [...state.tasks, task],
+        tasks: [task, ...state.tasks], 
+        //tasks: [...state.tasks, task],
     })),
 
     on(updateTaskDone, (state, { task }) => ({
         ...state,
         tasks: state.tasks.map((t) => {
-            if (t.id === task.id) {
+            if (t._id === task._id) {
                 return { ...task };
             } else {
                 return t;
@@ -47,7 +48,7 @@ const _tasksReducer = createReducer(
     })),
     on(deleteTask, (state, { taskId }) => ({
         ...state,
-        tasks: state.tasks.filter((t) => t.id !== taskId),
+        tasks: state.tasks.filter((t) => t._id !== taskId),
     })),
     //valida si existe una tarea con el mismo nombre
     on(validTask, (state, { task }) => {
